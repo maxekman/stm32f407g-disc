@@ -113,20 +113,20 @@ ctor!(LD3, LD4, LD5, LD6);
 impl Led {
     /// Turns the LED off
     pub fn off(&mut self) {
-        self.pin.set_low();
+        let _ = self.pin.try_set_low().unwrap();
     }
 
     /// Turns the LED on
     pub fn on(&mut self) {
-        self.pin.set_high();
+        let _ = self.pin.try_set_high().unwrap();
     }
 
     /// Toggles the LED
     pub fn toggle(&mut self) {
-        if let Ok(true) = self.pin.is_low() {
-            self.pin.set_high();
+        if let Ok(true) = self.pin.try_is_low() {
+            let _ = self.pin.try_set_high().unwrap();
         } else {
-            self.pin.set_low();
+            let _ = self.pin.try_set_low().unwrap();
         }
     }
 }

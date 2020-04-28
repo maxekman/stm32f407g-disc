@@ -39,8 +39,8 @@ fn main() -> ! {
 
         loop {
             // Read character and echo it back
-            let received = block!(rx.read()).unwrap();
-            block!(tx.write(received)).ok();
+            let received = block!(rx.try_read()).unwrap();
+            block!(tx.try_write(received)).ok();
         }
     }
 

@@ -35,31 +35,31 @@ fn main() -> ! {
         loop {
             // Turn LEDs on one after the other with 500ms delay between them
             leds[LedColor::Orange].on();
-            delay.delay_ms(500_u16);
+            let _ = delay.try_delay_ms(500_u16);
             leds[LedColor::Red].on();
-            delay.delay_ms(500_u16);
+            let _ = delay.try_delay_ms(500_u16);
             leds[LedColor::Blue].on();
-            delay.delay_ms(500_u16);
+            let _ = delay.try_delay_ms(500_u16);
             leds[LedColor::Green].on();
-            delay.delay_ms(500_u16);
+            let _ = delay.try_delay_ms(500_u16);
 
             // Delay twice for half a second due to limited timer resolution
-            delay.delay_ms(500_u16);
-            delay.delay_ms(500_u16);
+            let _ = delay.try_delay_ms(500_u16);
+            let _ = delay.try_delay_ms(500_u16);
 
             // Turn LEDs off one after the other with 500ms delay between them
             leds[LedColor::Orange].off();
-            delay.delay_ms(500_u16);
+            let _ = delay.try_delay_ms(500_u16);
             leds[LedColor::Red].off();
-            delay.delay_ms(500_u16);
+            let _ = delay.try_delay_ms(500_u16);
             leds[LedColor::Blue].off();
-            delay.delay_ms(500_u16);
+            let _ = delay.try_delay_ms(500_u16);
             leds[LedColor::Green].off();
-            delay.delay_ms(500_u16);
+            let _ = delay.try_delay_ms(500_u16);
 
             // Delay twice for half a second due to limited timer resolution
-            delay.delay_ms(500_u16);
-            delay.delay_ms(500_u16);
+            let _ = delay.try_delay_ms(500_u16);
+            let _ = delay.try_delay_ms(500_u16);
         }
     }
 

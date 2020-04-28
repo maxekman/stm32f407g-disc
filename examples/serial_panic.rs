@@ -67,12 +67,12 @@ fn main() -> ! {
         let mut counter = 0;
         loop {
             // Read character and echo it back
-            let received = block!(rx.read()).unwrap();
+            let received = block!(rx.try_read()).unwrap();
 
             // Obtain write part of serial port via Mutex
             cortex_m::interrupt::free(|cs| {
                 if let Some(ref mut tx) = *PANIC_SERIAL.borrow(cs).borrow_mut().deref_mut() {
-                    block!(tx.write(received)).ok();
+                    block!(tx.try_write(received)).ok();
                 }
             });
 
